@@ -4,9 +4,7 @@ import com.dev.billing.entity.ProductItem;
 import com.dev.billing.parser.CsvDataParser;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: droid
@@ -23,7 +21,14 @@ public class ReferenceDataManager {
 
     public List<ProductItem> getAllProducts() {
         try {
-            return csvDataParser.parseData("product_details.csv", ProductItem.class);
+            List<ProductItem> list = csvDataParser.parseData("product_details.csv", ProductItem.class);
+            Collections.sort(list,new Comparator<ProductItem>() {
+                @Override
+                public int compare(ProductItem o1, ProductItem o2) {
+                    return o1.getProductName().compareToIgnoreCase(o2.getProductName());
+                }
+            });
+            return list;
         } catch (IOException e) {
             throw new RuntimeException("error reading product file", e);
         }
