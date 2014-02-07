@@ -55,6 +55,7 @@ public class BillEntryView extends JFrame {
         Box row2 = Box.createVerticalBox();
         errorBox = new JTextField();
         errorBox.setForeground(Color.RED);
+        errorBox.setEditable(false);
         row2.add(errorBox);
         row2.add(Box.createVerticalStrut(10));
         Box column2 = Box.createHorizontalBox();
@@ -101,7 +102,9 @@ public class BillEntryView extends JFrame {
                     return;
                 }
                 try {
-                    new SimpleDateFormat(firstNonNull(System.getProperty(DATE_FORMAT_PROPERTY), DEFAULT_DATE_FORMAT)).parse(dateField.getText().trim());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(firstNonNull(System.getProperty(DATE_FORMAT_PROPERTY), DEFAULT_DATE_FORMAT));
+                    simpleDateFormat.setLenient(false);
+                    simpleDateFormat.parse(dateField.getText().trim());
                     if (dateField.getText().trim().length() != 10) {
                         errorBox.setText(String.format("Date [%1$s] is incorrect", dateField.getText()));
                         return;
