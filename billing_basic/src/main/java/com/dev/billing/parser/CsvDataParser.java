@@ -1,6 +1,7 @@
 package com.dev.billing.parser;
 
 import com.dev.billing.entity.BillItem;
+import com.dev.billing.util.FileConstants;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
@@ -12,8 +13,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
+import static com.dev.billing.util.FileUtil.getCompletePath;
 import static com.google.common.base.Objects.firstNonNull;
-import static com.google.common.base.Strings.isNullOrEmpty;
 
 /**
  * User: droid
@@ -22,10 +23,10 @@ import static com.google.common.base.Strings.isNullOrEmpty;
  */
 public class CsvDataParser<T> {
 
-    private static final String BASE_DIR_PROPERTY = "base.dir";
+
     private static final String DATE_FORMAT_PROPERTY = "date.format";
     private static final String DEFAULT_DATE_FORMAT = "dd/MM/yyyy";
-    private static final String DELIMITER = ",";
+
 
     static {
         //register date converter for bean utils
@@ -65,16 +66,10 @@ public class CsvDataParser<T> {
     }
 
     private String[] parseRow(String row) {
-        return row.split(DELIMITER);
+        return row.split(FileConstants.DELIMITER);
     }
 
-    private String getCompletePath(String file) {
-        return isNullOrEmpty(System.getProperty(BASE_DIR_PROPERTY)) ?
-                file :
-                System.getProperty(BASE_DIR_PROPERTY) + File.separator + file;
-    }
-
-    public static void main(String[] args) throws IOException {
+   public static void main(String[] args) throws IOException {
         List<BillItem> items = new CsvDataParser<BillItem>().parseData("billing_data.csv", BillItem.class);
         for (Object item : items) {
             System.out.println(item);

@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * User: droid
  * Date: 30/1/14
@@ -46,7 +48,9 @@ public class BillingManager {
             if (billsMap.get(item.getBillNo()) == null) {
                 billsMap.put(item.getBillNo(), new Bill(item.getBillNo(), item.getBillingDate()));
             }
+
             ProductItem product = productsMap.get(item.getProductId());
+            checkArgument(product != null, String.format("Product for Id [%1$s] is missing", item.getProductId()));
             billsMap.get(item.getBillNo()).addItem(product.getProductName(), item.getProductQuantity(), product.getPrice(), product.getVatPercentage());
         }
         System.out.println(billsMap.values());
@@ -75,9 +79,9 @@ public class BillingManager {
                 System.out.println("Generated bill " + aBill.getBillNo());
             }
         } catch (JRException e) {
-           throw new RuntimeException("error generation invoice",e);
+            throw new RuntimeException("error generation invoice", e);
         } catch (IOException e) {
-            throw new RuntimeException("error reading invoice template",e);
+            throw new RuntimeException("error reading invoice template", e);
         }
     }
 }

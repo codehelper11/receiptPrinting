@@ -175,22 +175,25 @@
 			<staticText>
 				<reportElement x="353" y="3" width="35" height="15" uuid="c5fc5454-b315-47c6-ac66-481c7adf1d37"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Rate]]></text>
+				<text><![CDATA[M.R.P]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="402" y="3" width="59" height="15" uuid="cc1f1d8b-e824-4181-bca6-6bc42d5add53"/>
 				<textElement textAlignment="Center">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Total]]></text>
+				<text><![CDATA[Total (Rs)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="464" y="3" width="32" height="17" uuid="44119469-518c-4b7e-8cac-81e48f7106cd"/>
 				<text><![CDATA[Vat %]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="501" y="3" width="32" height="17" uuid="f4562db9-288a-4406-bc70-60622722725f"/>
-				<text><![CDATA[Vat]]></text>
+				<reportElement x="496" y="2" width="37" height="17" uuid="f4562db9-288a-4406-bc70-60622722725f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Vat (Rs)]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -288,24 +291,24 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="461" y="0" width="32" height="25" uuid="549d78b1-d80f-4b93-b3ce-c6fed5891eef"/>
+				<reportElement x="461" y="0" width="34" height="25" uuid="549d78b1-d80f-4b93-b3ce-c6fed5891eef"/>
 				<textElement textAlignment="Right">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Total
-Vat]]></text>
+Vat(Rs)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="299" y="0" width="92" height="25" uuid="039c8fc2-7759-4101-82a9-572a2839c96d"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Total Sale Before
-Adding Vat]]></text>
+Adding Vat (Rs)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="301" y="26" width="90" height="25" uuid="91495982-61b9-48fb-bf15-430e29a04329"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Total Sale Price
-With Vat]]></text>
+With Vat (Rs)]]></text>
 			</staticText>
 			<line direction="BottomUp">
 				<reportElement x="300" y="25" width="235" height="1" uuid="a856b63c-e16d-4a17-add3-846542ad51c7"/>
