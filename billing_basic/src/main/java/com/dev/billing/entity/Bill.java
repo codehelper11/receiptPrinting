@@ -116,6 +116,26 @@ public class Bill {
         return vat;
     }
 
+    public double getTotalVatFivePercent() {
+        double vat = 0;
+        for (Item item : items) {
+            if (Double.compare(item.getVatPercentage(), new Double(5.00)) == 0) {
+                vat += item.getVatPercentage() * item.getTotal() / 100;
+            }
+        }
+        return vat;
+    }
+
+    public double getTotalVatTwelvePercent() {
+        double vat = 0;
+        for (Item item : items) {
+            if (Double.compare(item.getVatPercentage(), new Double(12.50)) == 0) {
+                vat += item.getVatPercentage() * item.getTotal() / 100;
+            }
+        }
+        return vat;
+    }
+
     public double getTotalExcludingVat() {
         double total = 0;
         for (Item item : items) {

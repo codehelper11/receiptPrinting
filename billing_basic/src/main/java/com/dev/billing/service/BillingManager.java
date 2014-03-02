@@ -70,6 +70,8 @@ public class BillingManager {
                 parameters.put("billDate", aBill.getBillingDate());
                 parameters.put("customerName", "CASH");
                 parameters.put("totalVat", aBill.getTotalVat());
+                parameters.put("totalVat5", aBill.getTotalVatFivePercent());
+                parameters.put("totalVat12", aBill.getTotalVatTwelvePercent());
                 parameters.put("totalExcludingVat", aBill.getTotalExcludingVat());
                 parameters.put("billTotal", aBill.getTotalExcludingVat() + aBill.getTotalVat());
                 dataSource = new JRBeanCollectionDataSource(aBill.getItems());
