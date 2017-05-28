@@ -1,8 +1,6 @@
 package com.dev.billing;
 
-import com.dev.billing.service.BillingManager;
-import com.dev.billing.swing.BillEntryView;
-import com.dev.billing.swing.SwingConsole;
+import com.dev.billing.service.ReceiptManager;
 
 /**
  * User: droid
@@ -13,15 +11,12 @@ public class Bootstrap {
 
     public static void main(String[] args) {
         if(args.length!=1){
-            System.out.println("Usage : java -jar billing.jar BILL_ENTRY|GENERATE_BILLS");
+            System.out.println("Usage : java -jar billing.jar GENERATE_RECEIPTS");
             return;
         }
         switch (args[0]){
-            case "GENERATE_BILLS":
-                new BillingManager().generateBills();
-                break;
-            case "BILL_ENTRY":
-                SwingConsole.run(new BillEntryView(), 600, 600, "Bill Entry");
+            case "GENERATE_RECEIPTS":
+                new ReceiptManager().generateReceipts();
                 break;
             default:
                 System.err.println("INVALID SELECTION");

@@ -1,6 +1,6 @@
 package com.dev.billing.parser;
 
-import com.dev.billing.entity.BillItem;
+import com.dev.billing.entity.ReceiptItem;
 import com.dev.billing.util.FileConstants;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
@@ -70,7 +70,7 @@ public class CsvDataParser<T> {
     }
 
    public static void main(String[] args) throws IOException {
-        List<BillItem> items = new CsvDataParser<BillItem>().parseData("billing_data.csv", BillItem.class);
+        List<ReceiptItem> items = new CsvDataParser<ReceiptItem>().parseData("/home/vinay/work/intellij_workspace/billing_tactical/billing_basic/src/main/resources/receipt_data.csv", ReceiptItem.class);
         for (Object item : items) {
             System.out.println(item);
         }
