@@ -2,6 +2,7 @@ package com.dev.billing.service;
 
 import com.dev.billing.entity.ReceiptItem;
 import com.dev.billing.parser.CsvDataParser;
+import com.dev.billing.util.Formatter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -9,6 +10,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.Normalizer;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +39,8 @@ public class ReceiptManager {
 
 
     public void generateReceipts() {
+        String message = "as voluntary contribution towards the general fund of the trust.";
+        String cashMessage = "(received in cash) " + message;
         try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("report_template/isha_reciept_template.jrxml")) {
             Map parameters = new HashMap();
             JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
@@ -51,13 +55,14 @@ public class ReceiptManager {
                 parameters.put("address", receiptItem.getAddress());
                 parameters.put("phoneNumber", receiptItem.getPhoneNumber());
                 parameters.put("emailAddress", receiptItem.getEmailAddress());
-                parameters.put("amountInWords", receiptItem.getAmountInWords());
+                parameters.put("amountInWords", Formatter.covertNumberToWord(Integer.parseInt(receiptItem.getAmount()))+" Only");
                 parameters.put("paymentType", receiptItem.getPaymentType());
                 parameters.put("chequeDate", receiptItem.getChequeDate());
                 parameters.put("bankName", receiptItem.getBankName());
                 parameters.put("bankBranch", receiptItem.getBankBranch());
                 parameters.put("pan", receiptItem.getPan());
-                parameters.put("amount", receiptItem.getAmount()+"/-");
+                parameters.put("amount", Formatter.formatNumber(receiptItem.getAmount()) + "/-");
+                parameters.put("disclaimer", "cash".equalsIgnoreCase(receiptItem.getPaymentType()) ? cashMessage : message);
                 dataSource = new JRBeanCollectionDataSource(receiptItems);
                 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
                 JasperExportManager.exportReportToPdfFile(jasperPrint, String.format("receipt_%1$s.pdf", receiptItem.getSerialNumber()));

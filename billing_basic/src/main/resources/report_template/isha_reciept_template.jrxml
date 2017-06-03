@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-05-29T01:01:58 -->
+<!-- 2017-06-03T14:37:18 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="isha_reciept_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="075e544e-3795-45dd-8383-35324be51baf">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="serialNumber" class="java.lang.String" isForPrompting="false">
@@ -32,6 +32,7 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
 	<parameter name="amount" class="java.lang.String"/>
+	<parameter name="disclaimer" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -39,33 +40,35 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="100" splitType="Stretch">
+		<band height="98" splitType="Stretch">
 			<staticText>
-				<reportElement x="180" y="0" width="220" height="20" uuid="5a7d7329-a986-4fa8-8904-9c61968eb5a2"/>
+				<reportElement x="180" y="-3" width="220" height="26" uuid="5a7d7329-a986-4fa8-8904-9c61968eb5a2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font fontName="Arial Black" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ISHA TRUST]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="20" width="510" height="20" uuid="bf0bb301-d9e4-42be-aa97-f06993cf44e1"/>
+				<reportElement x="10" y="28" width="510" height="20" uuid="bf0bb301-d9e4-42be-aa97-f06993cf44e1"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Regd. Office: 38-C, Pocket A/14, Klkaji Extension, New Delhi 110019 dated 07-02-2017]]></text>
+				<text><![CDATA[Regd. Office: 38-C, Pocket A/14, Kalkaji Extension, New Delhi 110019]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="40" width="520" height="20" uuid="61f94726-b0fb-4908-a758-28f4b67781c5"/>
+				<reportElement x="5" y="48" width="520" height="20" uuid="61f94726-b0fb-4908-a758-28f4b67781c5"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Phone: +91-9873001716, +91-9811240865, +91-9999449559 Email: isha.trust@outlook.com]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="60" width="520" height="20" uuid="1bdf3519-b990-4882-b5ea-14ebf41e745f"/>
+				<reportElement x="5" y="68" width="520" height="20" uuid="1bdf3519-b990-4882-b5ea-14ebf41e745f"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Public Charitable Trust vide Regn. No. 162 under Certificate (Section 60)]]></text>
+				<text><![CDATA[Public Charitable Trust vide Regn. No. 162 under Certificate (Section 60) dated 07-02-2017]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="191" height="20" uuid="918279aa-dbb5-448f-b464-e951a71e2929"/>
+				<reportElement x="0" y="2" width="191" height="20" uuid="918279aa-dbb5-448f-b464-e951a71e2929"/>
 				<text><![CDATA[PAN No.: AAECI4557P]]></text>
 			</staticText>
 		</band>
@@ -88,6 +91,9 @@
 			</staticText>
 			<textField pattern="">
 				<reportElement x="51" y="30" width="100" height="22" uuid="b3e85b83-ace6-411e-bc06-3b8610567971"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{serialNumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -107,19 +113,27 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="298" splitType="Stretch">
+		<band height="329" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="11" width="200" height="13" uuid="6cffc33e-4f77-4e47-bebf-f75efdbb4807"/>
-				<text><![CDATA[Received with thanks from Sh./Smt./Ms]]></text>
+				<reportElement x="0" y="11" width="137" height="19" uuid="6cffc33e-4f77-4e47-bebf-f75efdbb4807"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Received with thanks from]]></text>
 			</staticText>
 			<line>
-				<reportElement x="202" y="22" width="334" height="1" uuid="7801e81a-5040-4ceb-8c9c-8b2f04d809ad"/>
+				<reportElement x="137" y="22" width="400" height="1" uuid="7801e81a-5040-4ceb-8c9c-8b2f04d809ad">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="201" y="10" width="320" height="17" uuid="fa4ca64d-9fe6-4f31-9bdc-fcb7754e67ac"/>
+				<reportElement x="137" y="10" width="320" height="17" uuid="fa4ca64d-9fe6-4f31-9bdc-fcb7754e67ac">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
 				<textElement>
 					<font size="12"/>
 				</textElement>
@@ -127,6 +141,9 @@
 			</textField>
 			<staticText>
 				<reportElement x="0" y="40" width="200" height="13" uuid="95d345eb-8c91-49c5-962a-eda0ac505b63"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
 				<text><![CDATA[Address]]></text>
 			</staticText>
 			<textField>
@@ -139,13 +156,15 @@
 			<line>
 				<reportElement x="43" y="51" width="496" height="1" uuid="36d04884-fb53-4297-bcc8-0c595b15ea4f"/>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="0" y="74" width="120" height="13" uuid="769bd247-6b91-43a3-955a-90005b53cdd0"/>
+				<reportElement x="0" y="74" width="115" height="13" uuid="769bd247-6b91-43a3-955a-90005b53cdd0">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
 				<textElement>
-					<font size="11"/>
+					<font size="11" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Contact No.of Donor]]></text>
 			</staticText>
@@ -155,17 +174,17 @@
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font size="11"/>
+					<font size="11" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Email ID of Donor]]></text>
 			</staticText>
 			<line>
-				<reportElement x="120" y="84" width="152" height="1" uuid="cfdd171d-1820-47f2-bdf9-a7e61e9df43b">
+				<reportElement x="115" y="84" width="152" height="1" uuid="cfdd171d-1820-47f2-bdf9-a7e61e9df43b">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
@@ -174,11 +193,11 @@
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="117" y="73" width="157" height="17" uuid="a65293c2-792f-4def-94eb-38bd48ff4865">
+				<reportElement x="115" y="72" width="157" height="17" uuid="a65293c2-792f-4def-94eb-38bd48ff4865">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
@@ -188,7 +207,7 @@
 				<textFieldExpression><![CDATA[$P{phoneNumber}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="382" y="73" width="154" height="17" uuid="161ec674-946f-4237-ba07-11cf9da01dc4">
+				<reportElement x="382" y="72" width="154" height="17" uuid="161ec674-946f-4237-ba07-11cf9da01dc4">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
@@ -198,40 +217,27 @@
 				<textFieldExpression><![CDATA[$P{emailAddress}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="3" y="108" width="76" height="17" uuid="36a31c85-04dd-4b0a-86f0-5fd2157475fc">
+				<reportElement x="3" y="108" width="68" height="17" uuid="36a31c85-04dd-4b0a-86f0-5fd2157475fc">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
 				<text><![CDATA[a sum of Rs.]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="366" y="110" width="76" height="17" uuid="a12ea386-39b5-4642-a6db-65cf136b91ce">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<text><![CDATA[in cash/cheque No.]]></text>
-			</staticText>
 			<line>
-				<reportElement x="71" y="118" width="280" height="1" uuid="060a1fb0-1e9c-4c2f-a4da-0316b13b56b2">
+				<reportElement x="68" y="118" width="470" height="1" uuid="060a1fb0-1e9c-4c2f-a4da-0316b13b56b2">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="447" y="118" width="100" height="1" uuid="3e4fc73f-68bb-4daf-8867-7558811ed48a">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="71" y="107" width="280" height="17" uuid="2d6bc0e6-8a32-4b86-afb5-82750b2b3335">
+				<reportElement x="68" y="106" width="468" height="17" uuid="2d6bc0e6-8a32-4b86-afb5-82750b2b3335">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
@@ -240,81 +246,69 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{amountInWords}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="447" y="107" width="100" height="17" uuid="1cb643de-36d6-4d8f-835c-23eccdad77e9">
+			<staticText>
+				<reportElement x="119" y="142" width="40" height="17" isRemoveLineWhenBlank="true" uuid="1e67b18b-52cc-44af-b287-0ee8c4e29808">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font size="12"/>
+					<font isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{paymentType}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="3" y="142" width="48" height="17" uuid="56f543fa-2492-4367-9c73-cc91b1e28566">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<text><![CDATA[Chq Dt.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="130" y="142" width="48" height="17" uuid="1e67b18b-52cc-44af-b287-0ee8c4e29808">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
 				<text><![CDATA[Bank]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="355" y="142" width="81" height="17" uuid="d6fb0d7e-abb5-4fc2-b2eb-57c8cdc4631d">
+				<reportElement x="333" y="142" width="81" height="17" isRemoveLineWhenBlank="true" uuid="d6fb0d7e-abb5-4fc2-b2eb-57c8cdc4631d">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
 				<text><![CDATA[Bank Branch]]></text>
 			</staticText>
 			<line>
-				<reportElement x="49" y="152" width="75" height="1" uuid="a290466b-3fdc-408d-bfe7-002fd23d002e">
+				<reportElement x="47" y="152" width="65" height="1" isRemoveLineWhenBlank="true" uuid="a290466b-3fdc-408d-bfe7-002fd23d002e">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="175" y="152" width="175" height="1" uuid="b62187eb-1743-433c-9ac9-5b1cd24fdbe9">
+				<reportElement x="153" y="152" width="175" height="1" isRemoveLineWhenBlank="true" uuid="b62187eb-1743-433c-9ac9-5b1cd24fdbe9">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="430" y="152" width="115" height="1" uuid="5ac523bf-ee6f-4b5f-aa91-1f30a01f6cc5">
+				<reportElement x="402" y="152" width="130" height="1" isRemoveLineWhenBlank="true" uuid="5ac523bf-ee6f-4b5f-aa91-1f30a01f6cc5">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="2" y="176" width="332" height="30" uuid="7e31ef92-852b-403a-a54f-939f9dd8b8eb">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-				</reportElement>
-				<text><![CDATA[as voluntary contribution towards the general fund of the trust.]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="2" y="210" width="48" height="30" uuid="a13f8096-bbbd-48f0-8da9-f2ee2bade0eb">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font size="12"/>
+					<font size="12" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[PAN :]]></text>
 			</staticText>
@@ -326,7 +320,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<graphicElement>
-					<pen lineStyle="Dotted"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<rectangle radius="10">
@@ -336,25 +330,20 @@
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="14" y="266" width="35" height="23" uuid="7821149a-3588-4c30-a401-1e6a9a9b8af1"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Rs.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="341" y="266" width="194" height="30" uuid="dcb99d94-d2ac-4484-b7bb-24a565ca2af5">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				<reportElement x="14" y="265" width="46" height="21" uuid="7821149a-3588-4c30-a401-1e6a9a9b8af1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font fontName="SansSerif" size="18" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[(Receiver's Signature)]]></text>
+				<text><![CDATA[INR]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="43" y="141" width="81" height="17" uuid="3570cee2-f975-401e-93a7-57c7f96a8da4">
+				<reportElement x="47" y="140" width="71" height="17" isRemoveLineWhenBlank="true" uuid="3570cee2-f975-401e-93a7-57c7f96a8da4">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font size="12"/>
@@ -362,9 +351,10 @@
 				<textFieldExpression><![CDATA[$P{chequeDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="178" y="141" width="172" height="17" uuid="da278c42-83b5-4e56-a24e-01b885182725">
+				<reportElement key="" x="150" y="140" width="172" height="17" isRemoveLineWhenBlank="true" uuid="da278c42-83b5-4e56-a24e-01b885182725">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font size="12"/>
@@ -372,9 +362,11 @@
 				<textFieldExpression><![CDATA[$P{bankName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="141" width="117" height="17" uuid="aa3316ae-b9f3-41bf-a301-c6ed070b905c">
+				<reportElement x="403" y="140" width="130" height="17" isRemoveLineWhenBlank="true" uuid="aa3316ae-b9f3-41bf-a301-c6ed070b905c">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
 				</reportElement>
 				<textElement>
 					<font size="12"/>
@@ -382,7 +374,7 @@
 				<textFieldExpression><![CDATA[$P{bankBranch}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="209" width="200" height="30" uuid="5215aafa-3ff2-4ded-bf84-3b234fbcf8ed">
+				<reportElement x="40" y="208" width="200" height="30" uuid="5215aafa-3ff2-4ded-bf84-3b234fbcf8ed">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -391,12 +383,41 @@
 				<textFieldExpression><![CDATA[$P{pan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="51" y="265" width="140" height="30" uuid="a80b4c95-c840-4154-b43f-b410aceebcc8"/>
+				<reportElement x="54" y="266" width="140" height="30" uuid="a80b4c95-c840-4154-b43f-b410aceebcc8"/>
 				<textElement>
-					<font size="14" isBold="false"/>
+					<font size="16" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="3" y="306" width="557" height="20" uuid="d44f1f4a-22cd-43a1-9f86-7e4964173724">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[(This is an electronically generated receipt - No signature required)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="3" y="178" width="500" height="30" uuid="a0c8456a-173b-4bc4-803c-d0dbe3ada02a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{disclaimer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="142" width="40" height="30" isRemoveLineWhenBlank="true" uuid="27af5cea-0074-4bbb-80d9-39e4350361bd">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<printWhenExpression><![CDATA[!$P{paymentType}.equalsIgnoreCase( "cash" )]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Chq Dt.]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
