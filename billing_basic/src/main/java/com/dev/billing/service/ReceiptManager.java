@@ -2,6 +2,7 @@ package com.dev.billing.service;
 
 import com.dev.billing.entity.ReceiptItem;
 import com.dev.billing.parser.CsvDataParser;
+import com.dev.billing.util.FileConstants;
 import com.dev.billing.util.Formatter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -10,11 +11,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.Normalizer;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: droid
@@ -31,7 +28,7 @@ public class ReceiptManager {
 
     public List<ReceiptItem> getAllReceipts() {
         try {
-            return receiptItemParser.parseData("/home/vinay/work/intellij_workspace/billing_tactical/billing_basic/src/main/resources/receipt_data.csv", ReceiptItem.class);
+            return receiptItemParser.parseData(FileConstants.RECEIPT_FILE, ReceiptItem.class);
         } catch (IOException e) {
             throw new RuntimeException("could not read billing data", e);
         }
@@ -48,6 +45,8 @@ public class ReceiptManager {
             JRBeanCollectionDataSource dataSource;
             Collection<ReceiptItem> receiptItems = getAllReceipts();
             for (ReceiptItem receiptItem : receiptItems) {
+                List<ReceiptItem> items = new ArrayList<>();
+                items.add(receiptItem);
                 System.out.println("Going to generate receipt " + receiptItem.getSerialNumber());
                 parameters.put("serialNumber", receiptItem.getSerialNumber());
                 parameters.put("date", receiptItem.getDate());
@@ -63,7 +62,7 @@ public class ReceiptManager {
                 parameters.put("pan", receiptItem.getPan());
                 parameters.put("amount", Formatter.formatNumber(receiptItem.getAmount()) + "/-");
                 parameters.put("disclaimer", "cash".equalsIgnoreCase(receiptItem.getPaymentType()) ? cashMessage : message);
-                dataSource = new JRBeanCollectionDataSource(receiptItems);
+                dataSource = new JRBeanCollectionDataSource(items);
                 JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
                 JasperExportManager.exportReportToPdfFile(jasperPrint, String.format("receipt_%1$s.pdf", receiptItem.getSerialNumber()));
                 parameters.clear();

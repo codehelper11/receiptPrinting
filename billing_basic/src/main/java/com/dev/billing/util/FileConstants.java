@@ -8,6 +8,6 @@ package com.dev.billing.util;
 public interface FileConstants {
 
     String PRODUCT__DATA_FILE = "product_details.csv";
-    String BILL_DATA_FILE = "billing_data.csv";
+    String RECEIPT_FILE = "receipt_data.csv";
     String DELIMITER = "\\|";
 }
